@@ -6,7 +6,7 @@
 /*   By: afuchs <afuchs@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:33:10 by afuchs            #+#    #+#             */
-/*   Updated: 2022/03/20 16:27:06 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/03/20 17:57:50 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -84,7 +84,7 @@ static char	*process_buf(int fd, char *buf)
 	if (!r_buf)
 		return ((void *)0);
 	ft_cpy(r_buf, buf + st, re);
-	if (*(buf + st + re) == '\n')
+	if (*(buf + st + re) == '\n' && st + re < B_SIZE - 1)
 		return (terminate_and_clean(r_buf, buf, st, re));
 	str = rec_gnl(fd, buf, re);
 	ft_cpy(str, r_buf, re);
@@ -95,7 +95,7 @@ char	*get_next_line(int fd)
 {
 	static char	buf[OPEN_MAX][B_SIZE];
 
-	if (!*(buf[fd]) || B_SIZE == 1)
-		return (rec_gnl(fd, buf[fd], 0));
+	if (!**(buf + fd) || B_SIZE == 1)
+		return (rec_gnl(fd, *(buf + fd), 0));
 	return (process_buf(fd, *(buf + fd)));
 }
