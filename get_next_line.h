@@ -6,7 +6,7 @@
 /*   By: afuchs <afuchs@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:33:44 by afuchs            #+#    #+#             */
-/*   Updated: 2022/03/19 16:10:41 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/03/20 16:14:09 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef GET_NEXT_LINE_H
@@ -23,4 +23,6 @@
 char	*get_next_line(int fd);
 int		is_eol_in(char *str);
 void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t count, size_t size);
+void	*return_and_free(void *ret, void *ptr);
 #endif
