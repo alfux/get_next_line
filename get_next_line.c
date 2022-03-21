@@ -6,7 +6,7 @@
 /*   By: afuchs <afuchs@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:33:10 by afuchs            #+#    #+#             */
-/*   Updated: 2022/03/20 18:41:20 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/03/21 11:10:31 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -48,7 +48,7 @@ static char	*rec_gnl(int fd, char *buf, size_t len)
 	*(str + len) = '\0';
 	ft_cpy(str + len - n_buf, r_buf, n_buf);
 	ft_cpy(buf, r_buf, B_SIZE);
-	return (return_and_free(str, r_buf));
+	return ((char *)return_and_free(str, r_buf));
 }
 
 static char	*terminate_and_clean(char *r_buf, char *buf, size_t st, size_t re)
