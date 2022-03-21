@@ -6,10 +6,10 @@
 /*   By: afuchs <afuchs@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:33:10 by afuchs            #+#    #+#             */
-/*   Updated: 2022/03/21 12:53:34 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/03/21 15:34:58 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static void	ft_cpy(char *dst, char *buf, size_t len)
 {
