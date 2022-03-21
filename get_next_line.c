@@ -6,7 +6,7 @@
 /*   By: afuchs <afuchs@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:33:10 by afuchs            #+#    #+#             */
-/*   Updated: 2022/03/21 11:10:31 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/03/21 12:47:32 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -16,7 +16,7 @@ static void	ft_cpy(char *dst, char *buf, size_t len)
 	size_t	i;
 
 	i = 0;
-	while (i < len)
+	while (i < len && dst && buf)
 	{
 		*(dst + i) = *(buf + i);
 		i++;
@@ -72,6 +72,7 @@ static char	*process_buf(int fd, char *buf)
 
 	st = 0;
 	re = 0;
+	r_buf = (void *)0;
 	while (*(buf + st) != '\n')
 		st++;
 	if (st < B_SIZE - 1)
@@ -79,13 +80,13 @@ static char	*process_buf(int fd, char *buf)
 		st++;
 		while (st + re < B_SIZE && *(buf + st + re) && *(buf + st + re) != '\n')
 			re++;
+		r_buf = ft_calloc(sizeof (char), re + 2);
+		if (!r_buf)
+			return ((void *)0);
+		ft_cpy(r_buf, buf + st, re);
+		if (*(buf + st + re) == '\n' && st + re < B_SIZE - 1)
+			return (terminate_and_clean(r_buf, buf, st, re));
 	}
-	r_buf = ft_calloc(sizeof (char), re + 2);
-	if (!r_buf)
-		return ((void *)0);
-	ft_cpy(r_buf, buf + st, re);
-	if (*(buf + st + re) == '\n' && st + re < B_SIZE - 1)
-		return (terminate_and_clean(r_buf, buf, st, re));
 	str = rec_gnl(fd, buf, re);
 	ft_cpy(str, r_buf, re);
 	return (return_and_free(str, r_buf));
