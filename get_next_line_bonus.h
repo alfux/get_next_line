@@ -6,7 +6,7 @@
 /*   By: afuchs <afuchs@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:33:44 by afuchs            #+#    #+#             */
-/*   Updated: 2022/03/20 18:56:49 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/03/25 21:23:30 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef GET_NEXT_LINE_BONUS_H
@@ -19,6 +19,9 @@
 # include <stdlib.h>
 # include <stddef.h>
 # include <limits.h>
+# ifndef OPEN_MAX
+#  define OPEN_MAX 256
+# endif
 
 char	*get_next_line(int fd);
 int		is_eol_in(char *str);
