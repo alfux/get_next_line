@@ -6,7 +6,7 @@
 /*   By: afuchs <afuchs@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:33:10 by afuchs            #+#    #+#             */
-/*   Updated: 2022/03/21 12:53:34 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/03/25 14:02:36 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -96,7 +96,7 @@ char	*get_next_line(int fd)
 {
 	static char	buf[OPEN_MAX][B_SIZE];
 
-	if (fd < 0)
+	if (fd < 0 || fd >= OPEN_MAX || B_SIZE < 1)
 		return ((void *)0);
 	if (!**(buf + fd) || B_SIZE == 1)
 		return (rec_gnl(fd, *(buf + fd), 0));
